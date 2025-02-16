@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "simple_golangapi_helm.name" -}}
+{{- define "simplegolangapihelm.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "simple_golangapi_helm.fullname" -}}
+{{- define "simplegolangapihelm.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "simple_golangapi_helm.chart" -}}
+{{- define "simplegolangapihelm.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "simple_golangapi_helm.labels" -}}
-helm.sh/chart: {{ include "simple_golangapi_helm.chart" . }}
-{{ include "simple_golangapi_helm.selectorLabels" . }}
+{{- define "simplegolangapihelm.labels" -}}
+helm.sh/chart: {{ include "simplegolangapihelm.chart" . }}
+{{ include "simplegolangapihelm.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "simple_golangapi_helm.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "simple_golangapi_helm.name" . }}
+{{- define "simplegolangapihelm.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "simplegolangapihelm.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "simple_golangapi_helm.serviceAccountName" -}}
+{{- define "simplegolangapihelm.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "simple_golangapi_helm.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "simplegolangapihelm.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

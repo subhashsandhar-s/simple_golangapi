@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "simple_golangapi_helm.fullname" . }}
+  name: {{ include "simplegolangapihelm.fullname" . }}
   labels:
-    {{- include "simple_golangapi_helm.labels" . | nindent 4 }}
+    {{- include "simplegolangapihelm.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "simple_golangapi_helm.fullname" . }}
+    name: {{ include "simplegolangapihelm.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
