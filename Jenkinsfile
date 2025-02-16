@@ -49,5 +49,11 @@ pipeline {
                 sh 'docker push $DOCKER_IMAGE:latest'
             }
         }
+
+        steps('Deployment to Minikube') {
+            steps {
+                sh 'helm install simple_golangapi ./simple_golangapi_helm'
+            }
+        }
     }
 }
