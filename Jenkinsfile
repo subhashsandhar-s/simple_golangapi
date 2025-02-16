@@ -50,7 +50,7 @@ pipeline {
             }
         }
 
-        steps('Deployment to Minikube') {
+        stage('Deployment to Minikube') {
             steps {
                 sh 'helm install simple_golangapi ./simple_golangapi_helm'
             }
