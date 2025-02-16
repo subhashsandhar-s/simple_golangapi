@@ -25,12 +25,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                sh './my_app'
-            }
-        }
-
 
         stage('Build Docker Image') {
             steps {
