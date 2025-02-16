@@ -17,5 +17,5 @@ func main() {
 
 	router.HandleFunc("/hello", helloWorld)
 	http.ListenAndServe(":9001", router)
-	fmt.Println("Server started running at 9001")
+	fmt.Println("Server started running at port 9001")
 }
