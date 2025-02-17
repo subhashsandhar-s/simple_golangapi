@@ -19,8 +19,8 @@ func helloWorld(w http.ResponseWriter, r *http.Request) {
 func main() {
 	router := mux.NewRouter()
 
-	router.HandleFunc("/hello", helloWorld)
+	router.HandleFunc("/", helloWorld)
 	log.SetOutput(os.Stdout)
-	log.Println("Server started running at 9001")
-	http.ListenAndServe(":9001", router)
+	log.Println("Server started running at 80")
+	http.ListenAndServe(":80", router)
 }
