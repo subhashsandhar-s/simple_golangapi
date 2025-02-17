@@ -20,6 +20,7 @@ func main() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/hello", helloWorld)
+	log.SetOutput(os.Stdout)
 	log.Println("Server started running at 9001")
 	http.ListenAndServe(":9001", router)
 }

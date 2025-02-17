@@ -52,7 +52,7 @@ pipeline {
 
         stage('Deployment to Minikube') {
             steps {
-                sh 'helm install simplegolangapi ./simplegolangapihelm'
+                sh 'helm upgrade --install simplegolangapi ./simplegolangapihelm'
             }
         }
     }
